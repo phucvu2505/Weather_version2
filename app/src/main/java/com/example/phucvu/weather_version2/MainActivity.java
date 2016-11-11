@@ -11,6 +11,7 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.widget.ImageView;
@@ -84,6 +85,10 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.C
         txtTemperature = (TextView) findViewById(R.id.txt_temperature);
         txtLastUpdate = (TextView) findViewById(R.id.txt_last_update);
         imgIcon = (ImageView) findViewById(R.id.img_icon);
+        mRecyclerView = (RecyclerView) findViewById(R.id.list_forecast_3h);
+
+        RecyclerView.LayoutManager mlayoutManager = new LinearLayoutManager(this);
+        mRecyclerView.setLayoutManager(mlayoutManager);
     }
 
    protected synchronized void buildGoogleApiClient() {

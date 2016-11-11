@@ -23,10 +23,10 @@ public class Forecast3hAdapter extends RecyclerView.Adapter<Forecast3hAdapter.Vi
 
     public static class ViewHolder extends RecyclerView.ViewHolder{
 
-        public TextView txtTimeFC; // display time forecast 3 hour
-        public ImageView imgFC3h; // display image forecast 3 hour
-        public TextView txtSttFC3h; // display status forecast 3 hour
-        public TextView txtTempFC3h; // display Temp forecast 3 hour
+        public TextView txtTimeFC; // hienthi time forecast 3 hour
+        public ImageView imgFC3h; // hienthi image forecast 3 hour
+        public TextView txtSttFC3h; // hienthi status forecast 3 hour
+        public TextView txtTempFC3h; // hienthi Temp forecast 3 hour
 
         public ViewHolder(View itemView) {
             super(itemView);
