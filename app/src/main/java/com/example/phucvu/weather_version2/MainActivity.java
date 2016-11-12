@@ -49,6 +49,7 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.C
     private final String urlImage = "http://openweathermap.org/img/w/";
     public static final int REQUEST_ID_ACCESS_COURSE_FINE_LOCATION = 100;
     private static final int REQUEST_WRITE_STORAGE = 112;
+    private Location currentLocation;
 
     private GoogleApiClient mGoogleApiClient;
 
@@ -63,7 +64,7 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.C
             buildGoogleApiClient();
         }
 
-        path = Environment.getExternalStorageDirectory().getAbsolutePath() + path + "/Download/current_weather.json";
+        path = Environment.getExternalStorageDirectory().getAbsolutePath() + "/Download/current_weather.json";
 
         //Check self permission WRITE_EXTERNAL_STORAGE với android 6.0 trở lên
         if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.M){
@@ -122,8 +123,7 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.C
             }
         }
     }
-    private Location getCurrentLocation() {
-        Location currentLocation = null;
+    private void getCurrentLocation() {
         try{
             if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.M){
                 if (ContextCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED
@@ -138,12 +138,11 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.C
         }catch (SecurityException e){
             Toast.makeText(this, "Show My Location Error: " + e.getMessage(), Toast.LENGTH_LONG).show();
         }
-        return currentLocation;
     }
 
     @Override
     public void onConnected(@Nullable Bundle bundle) {
-        Location currentLocation = getCurrentLocation();
+        getCurrentLocation();
         Log.e("Long", currentLocation.getLongitude()+"");
         Log.e("Lat", currentLocation.getLatitude()+"");
 
@@ -194,7 +193,7 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.C
                 .centerCrop()
                 .into(imgIcon);
         Log.e("TIME", weatherFC3h.getList().get(0).getDtTxt()+"");
-        Forecast3hAdapter mForecast3hAdapter = new Forecast3hAdapter(weatherFC3h.getList().subList(3, 10), this);
+        Forecast3hAdapter mForecast3hAdapter = new Forecast3hAdapter(weatherFC3h.getList().subList(2, 10), this);
         mRecyclerView.setAdapter(mForecast3hAdapter);
     }
     @Override

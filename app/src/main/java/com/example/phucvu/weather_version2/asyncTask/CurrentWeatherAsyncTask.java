@@ -24,7 +24,6 @@ public class CurrentWeatherAsyncTask extends AsyncTask<Void, Void, String> {
         public void onFinish(String body);
     }
 
-
     private CallBack callBack;
 
     private ProgressDialog mProgressDialog;
