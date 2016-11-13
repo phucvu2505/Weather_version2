@@ -50,6 +50,7 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.C
     public static final int REQUEST_ID_ACCESS_COURSE_FINE_LOCATION = 100;
     private static final int REQUEST_WRITE_STORAGE = 112;
     private Location currentLocation;
+    public static final String LOCATION_DATA = "LocationData";
 
     private GoogleApiClient mGoogleApiClient;
 
